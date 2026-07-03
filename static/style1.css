@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  background-color: #f7f7f7;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar {
+  width: 100%;
+  margin-top: -15px;
+  max-width: 10000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.left-icons, .right-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.icon.add {
+  background-color: #ff3333;
+}
+.icon.subtract {
+  background-color: #333;
+}
+.icon.multiply {
+  background-color: #ff3333;
+}
+.icon.divide {
+  background-color: #333;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-right: 5px;
+}
+
+.icon.logout {
+  background-color: #ff6666;
+  font-size: 16px;
+  border: #f7f7f7;
+  margin-top: 5px;
+}
+.icon.add-user {
+  background-color: #ff6666;
+  font-size: 16px;
+}
+.icon.history {
+  background-color: #ff6666;
+  font-size: 16px;
+  margin-left: -5px;
+}
+
+a{
+   color: inherit;
+   text-decoration: none;
+   padding: 5px;
+}
+
+ .container {
+    margin-top: 55px;
+    max-width: 900px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  header .icons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  
+  header .icon {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e91e63;
+  }
+  
+  h1 {
+    margin-top: 10px;
+    color: #e91e63;
+  }
+  
+  .input-section {
+  
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .input-text{
+    width: 90%;
+    padding: 6px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .send-button {
+    padding: 10px 20px;
+    background-color: #e91e63;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .problem-section, .solution-section {
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .problem-box, .solution-box {
+    background-color: #ffc1e3;
+    padding: 15px;
+    border-radius: 4px;
+    color: #333;
+  }
+  
+  .back-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #e91e63;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .back-button:hover, .send-button:hover {
+    background-color: #d81b60;
+  }
+  

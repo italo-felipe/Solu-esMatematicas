@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript"
+  src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" href="{% static 'style1.css' %}">
+</head>
+<body>
+  <div class="navbar">
+    <a href="{% url 'telaInicial' %}">
+    <div class="left-icons">
+      <div class="icon add">+</div>
+      <div class="icon subtract">−</div>
+      <div class="icon multiply">×</div>
+      <div class="icon divide">÷</div>
+    </div>
+    </a>
+
+    <div class="divider"></div>
+
+    <div class="right-icons">
+      <form action="{% url 'telaInicial' %}" method="POST">{% csrf_token %}
+        <button class="icon logout" name="logout"><i class="fa-solid fa-door-open"></i></button>
+      </form>
+      <a href="{% url 'register' %}">
+      <div class="icon add-user"><i class="fa-solid fa-user"></i></div>
+    </a>
+    <a href="{% url 'historic' %}">
+      <div class="icon history"><i class="fa-solid fa-calendar-days"></i></div>
+    </div>
+</a>
+  </div>
+  <div class="container">
+    <header>
+      <h1>Equações Diofantinas</h1>
+    </header>
+    
+    <main>
+      <div class="input-section">
+        <form action="{% url 'equacaodio' %}" method="post">{% csrf_token %}
+          
+          {% if verificacao %}
+            <input name="equadio" class="input-text" value="{{valor}}" placeholder="{{valor}}">
+          {% else %}
+            <input name="equadio" class="input-text">
+          {% endif %}
+        <input type="submit" class="send-button" name="Enviar">
+        </form>
+      </div>
+
+      <div class="problem-section">
+        <h2>Problema:</h2>
+        <div class="problem-box" id="problem-box">
+          {{s}}
+          <div style="margin-right: 100%;">$$ {{equadiof}} $$</div>
+        </div>
+      </div>
+
+      <div class="solution-section">
+        <h2>Solução:</h2>
+        <div class="solution-box" id="solution-box">
+          {% if verificacao2 %}
+          <p style="margin-right: 100%;">$$ {{ lista.0 }} = {{ resul.0 }} $$</p>
+          <p style="margin-right: 100%;">$$ {{ lista.1 }} = {{ resul.1 }} $$</p>
+          <div style="margin-right: 100%;">$$ k \in \mathbb{Z} $$</div>
+          {% else %}
+            {{resul}}
+        {% endif %}
+        </div>
+      </div>
+
+      <a href="{% url 'telaInicial' %}">
+        <button class="back-button">VOLTAR</button>
+        </a>
+    </main>
+  </div>
+</body>
+</html>

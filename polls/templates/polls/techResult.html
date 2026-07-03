@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultado - Teorema</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'teochResults.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'telaInicial' %}">
+        <div class="left-icons">
+          <div class="icon add">+</div>
+          <div class="icon subtract">−</div>
+          <div class="icon multiply">×</div>
+          <div class="icon divide">÷</div>
+        </div>
+        </a>
+    
+        <div class="divider"></div>
+    
+        <div class="right-icons">
+          <form action="{% url 'telaInicial' %}" method="POST">{% csrf_token %}
+            <button class="icon logout" name="logout"><i class="fa-solid fa-door-open"></i></button>
+          </form>
+          <a href="{% url 'register' %}">
+          <div class="icon add-user"><i class="fa-solid fa-user"></i></div>
+        </a>
+        <a href="{% url 'historic' %}">
+          <div class="icon history"><i class="fa-solid fa-calendar-days"></i></div>
+        </div>
+    </a>
+      </div>
+  <div class="container">
+    <header>
+      <h1>Teorema</h1>
+    </header>
+
+    <main>
+
+
+      <div class="result-section">
+        <h2>Problema:</h2>
+        
+        {{l3}}
+        <div class="result-box">
+            {{k}}
+            {% for i in lista %}
+            <p>{{i.0}}x ≡ {{i.1}} mod {{i.2}}</p>
+            {% endfor %}
+        </div>
+      </div>
+
+      <div class="solution-section">
+        <h2>Solução:</h2>
+        <div class="solution-box">
+            {% if ver %}
+            <p>O sistema não tem solução</p>
+            {% else %}
+            <p>x = {{l}}, k ∈ ℕ</p>
+            {% endif %}
+        </div>
+      </div>
+      <a href = "{% url 'teoch' %}">
+      <button class="back-button">VOLTAR</button>
+      </a>
+    </main>
+  </div>
+</body>
+</html>

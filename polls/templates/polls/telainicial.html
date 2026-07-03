@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'tela_inicial2.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  {% if logout %}
+<div class = "body">
+
+  <div class="caixa">
+    <h1>Logout</h1>
+    <p>Deseja sair da sua conta?</p>
+    <form action="{% url 'telaInicial' %}" method="POST">{% csrf_token %}
+    <div class="buttons">
+      <button class="button sair" id = "button_logout" name="sair">Sair</button>
+      <button class="button cancelar" id = "button_logout" name="cancelar">Cancelar</button>
+    </div>
+  </div>
+  
+</form>
+</div>
+{% else %}
+  <div class="navbar">
+
+    <div class="left-icons">
+      <div class="icon add">+</div>
+      <div class="icon subtract">−</div>
+      <div class="icon multiply">×</div>
+      <div class="icon divide">÷</div>
+    </div>
+
+
+    <div class="divider"></div>
+
+    <div class="right-icons">
+      <form action="{% url 'telaInicial' %}" method="POST">{% csrf_token %}
+        <button class="icon logout" name="logout"><i class="fa-solid fa-door-open"></i></button>
+      </form>
+      <a href="{% url 'register' %}">
+      <div class="icon add-user"><i class="fa-solid fa-user"></i></div>
+    </a>
+    <a href="{% url 'historic' %}">
+      <div class="icon history"><i class="fa-solid fa-calendar-days"></i></div>
+    </div>
+</a>
+  </div>
+
+
+  <div class="divider"></div>
+
+
+  <a href="{% url 'equacaodio' %}">
+  <div class="container">
+    <div class="botão">
+      <div class="formula">ax + by = c</div>
+      <div class="label">Equação Diofantina</div>
+    </div>
+</a>
+    <a href="{% url 'raizes' %}">
+    <div class="botão">
+      <div class="formula">anxⁿ + an-1xⁿ⁻¹</div>
+      <div class="label">Raízes</div>
+    </div>
+</a>
+<a href="{% url 'teoch' %}">
+    <div class="botão">
+      <div class="formula">a₁x = c₁ (mod m₁)</div>
+      <div class="label">Teorema</div>
+    </div>
+</a>
+<a href="{% url 'number' %}">
+    <div class="botão">
+      <div class="formula">n = p₁ᵃ¹ p₂ᵃ² ... pₙᵃⁿ</div>
+      <div class="label">Fatoração</div>
+    </div>
+  </div>
+</a>
+
+{% endif %}
+
+</form>
+</body>
+</html>

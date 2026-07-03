@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script type="text/javascript"
+    src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+  <link rel="stylesheet" href="{% static 'Teoch.css' %}">
+</head>
+<body>
+  <div class="navbar">
+    <a href="{% url 'telaInicial' %}">
+    <div class="left-icons">
+      <div class="icon add">+</div>
+      <div class="icon subtract">−</div>
+      <div class="icon multiply">×</div>
+      <div class="icon divide">÷</div>
+    </div>
+    </a>
+
+    <div class="divider"></div>
+
+    <div class="right-icons">
+      <form action="{% url 'telaInicial' %}" method="POST">{% csrf_token %}
+        <button class="icon logout" name="logout"><i class="fa-solid fa-door-open"></i></button>
+      </form>
+      <a href="{% url 'register' %}">
+      <div class="icon add-user"><i class="fa-solid fa-user"></i></div>
+    </a>
+    <a href="{% url 'historic' %}">
+      <div class="icon history"><i class="fa-solid fa-calendar-days"></i></div>
+    </div>
+</a>
+  </div>
+  
+  <div class="container">
+    <header>
+      <h1>Teorema</h1>
+    </header>
+
+    <main>
+      <div class="calculator-section">
+        <h2>Calculadora:</h2>
+        <div class="calculator-box">
+    <form action="{%  url 'teoch' %}" method="POST">{% csrf_token %}
+      {{e}}
+      {{s}}
+      {% if verificacao %}
+      
+      {% for i in l3 %}
+      <div class="calculator-row">
+      <input name={{forloop.counter0}} value="{{i.0}}" type="text" class="input-field" placeholder="{{i.0}}" />
+      <span class="symbol">x</span>
+      <span class="symbol">≡</span>
+      <input type="text" name={{forloop.counter0}} value="{{i.1}}" class="input-field" placeholder="{{i.1}}" />
+      <span class="symbol">mod</span>
+      <input type="text" name={{forloop.counter0}} class="input-field" placeholder="{{i.2}}" value="{{i.2}}"/>
+      </div>
+      {% endfor %}
+      <div class="button-group">
+        <button value="+" type="submit" name="+" class="calc-button">+</button>
+     
+      {% if v %}
+    <button type="submit" value="-" name="-" class="calc-button">-</button>
+    {% endif %}
+    <button class="send-button"  type="submit" value="Enviar" name="Enviar">ENVIAR</button>
+  </div>
+      {% else %}
+      {% for i in m %}
+      <div class="calculator-row">
+      <input name={{forloop.counter0}} type="text" class="input-field" placeholder="coef." />
+      <span class="symbol">x</span>
+      <span class="symbol">≡</span>
+      <input type="text" name={{forloop.counter0}} class="input-field" placeholder="valor" />
+      <span class="symbol">mod</span>
+      <input type="text" name={{forloop.counter0}} class="input-field" placeholder="mod"/>
+    </div>
+      {% endfor %}
+      <div class="button-group">
+        <button value="+" type="submit" name="+" class="calc-button">+</button>
+      {% if v %}
+    <button type="submit" value="-" name="-" class="calc-button">-</button>
+    {% endif %}
+
+      <button class="send-button"  type="submit" value="Enviar" name="Enviar">ENVIAR</button>
+
+    </div>
+    
+{% endif %}
+</form>
+<a href="{% url 'telaInicial' %}">
+  <button class="back-button">VOLTAR</button>
+  </a>
+
+</main>
+</div>
+</div>
+</div>
+</body>
+</html>
